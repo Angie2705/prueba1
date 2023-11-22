@@ -8,13 +8,23 @@ import { NotFoundPageRoutingModule } from './not-found-routing.module';
 
 import { NotFoundPage } from './not-found.page';
 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+import { IconoComponent } from 'src/app/components/icono/icono.component';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotFoundPageRoutingModule
+    NotFoundPageRoutingModule,
+    MatProgressBarModule
   ],
-  declarations: [NotFoundPage]
+
+  declarations: [
+    NotFoundPage,
+    IconoComponent
+  ]
 })
+
 export class NotFoundPageModule {}

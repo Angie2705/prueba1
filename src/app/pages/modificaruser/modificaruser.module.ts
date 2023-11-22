@@ -15,6 +15,10 @@ import { ModificaruserPage } from './modificaruser.page';
     IonicModule,
     ModificaruserPageRoutingModule
   ],
-  declarations: [ModificaruserPage]
+
+  declarations: [
+    ModificaruserPage
+  ]
 })
+
 export class ModificaruserPageModule {}

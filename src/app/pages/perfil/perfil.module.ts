@@ -15,6 +15,10 @@ import { PerfilPage } from './perfil.page';
     IonicModule,
     PerfilPageRoutingModule
   ],
-  declarations: [PerfilPage]
+  
+  declarations: [
+    PerfilPage
+  ]
 })
+
 export class PerfilPageModule {}

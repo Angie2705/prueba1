@@ -15,6 +15,10 @@ import { InfoviajePage } from './infoviaje.page';
     IonicModule,
     InfoviajePageRoutingModule
   ],
-  declarations: [InfoviajePage]
+
+  declarations: [
+    InfoviajePage
+  ]
 })
+
 export class InfoviajePageModule {}

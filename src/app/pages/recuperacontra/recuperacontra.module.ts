@@ -15,6 +15,10 @@ import { RecuperacontraPage } from './recuperacontra.page';
     IonicModule,
     RecuperacontraPageRoutingModule
   ],
-  declarations: [RecuperacontraPage]
+
+  declarations: [
+    RecuperacontraPage
+  ]
 })
+
 export class RecuperacontraPageModule {}

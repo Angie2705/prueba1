@@ -15,6 +15,10 @@ import { ReclamoPage } from './reclamo.page';
     IonicModule,
     ReclamoPageRoutingModule
   ],
-  declarations: [ReclamoPage]
+
+  declarations: [
+    ReclamoPage
+  ]
 })
+
 export class ReclamoPageModule {}

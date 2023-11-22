@@ -1,0 +1,130 @@
+.fondo {
+    --ion-background-color: #d6c8f0;
+    // background-image: url(../../../assets/icon/6075500.jpg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.caja {
+    
+    // background-color: #ab8ae9;
+    background-image: url(../../../assets/icon/6075500.jpg);
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    margin: 100; /* Elimina márgenes predeterminados */
+    width: 200;
+
+    max-height: 500px;
+    max-width: 300px; /* Ancho máximo deseado */
+    margin: 0 auto; /* Centra el elemento horizontalmente */
+    padding: 40px; /* Espacio interior para el contenido */ //la caja que dice correo electronico
+  }
+
+  
+ion-input{
+    justify-content: center;
+    display: flex;
+    color: #ffffff; //letras
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    
+}
+
+ion-button{
+    display: flex;
+    max-width: 165px;
+    width: 100%;
+    margin-top: 3px;
+    position: relative;
+    margin: 20px;
+  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+}
+
+//cabecera
+ion-toolbar {
+    --ion-background-color: #8346b4;
+    --ion-text-color: #effaff;
+}
+
+ion-label{
+    --ion-text-color: #effaff;
+    color: #ffffff;
+}
+
+.error-messages-container {
+    display: block; /* Asegura que los mensajes estén en formato vertical */
+    color: red; /* Color de texto en rojo u otro color deseado */
+    margin-top: 5px; /* Espacio superior entre mensajes (ajusta según sea necesario) */
+}
+   
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 9px;
+}
+
+.avatar{
+    /* cambia estos dos valores para definir el tamaño de tu círculo */
+    height: 20px;
+    width: 200px;
+    /* los siguientes valores son independientes del tamaño del círculo */
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-size: 100%;
+    // background-image: url(/src/assets/icon/auto_negro.png);
+}
+
+
+
+ion-header{
+    position: absolute;
+}
+
+
+
+
+// .caja {
+    
+//     background-color: #8c62d8;
+//     // background-image: url(../../../assets/icon/6075500.jpg);
+
+//     border-radius: 10px;
+//     box-shadow: 0px 0px 2px black;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+
+//     // height: 50vh;
+//     // margin: 0 auto; /* Centra horizontalmente */
+//     // width: 0%; /* Ancho deseado */
+//     // max-width: 0px; /* Ajuste el valor según sus necesidades */
+// }
+
+// .caja {
+//     background-color: #8c62d8;
+//     border-radius: 10px;
+//     box-shadow: 0px 0px 2px black;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     max-width: 400px; /* Ancho máximo deseado */
+//     margin: 0 auto; /* Centra el elemento horizontalmente */
+//     padding: 20px; /* Espacio interior para el contenido */
+// }

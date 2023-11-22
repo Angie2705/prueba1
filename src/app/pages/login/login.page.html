@@ -1,4 +1,37 @@
-<ion-header [translucent]="true">
+<ion-content class="fondo" [fullscreen]="true">
+
+  <ion-content>
+
+      <ion-card-content class="caja">
+        <div class="avatar" style="background-image: url(/src/assets/icon/auto_negro.png);"></div>
+
+        <ion-card-title>Bienvenid</ion-card-title>
+
+        <ion-card-title>Adgo</ion-card-title>
+
+        <ion-input label="Correo Electrónico" label-placement="floating" fill="outline" placeholder="Ingrese su Correo"
+          [(ngModel)]="email" (input)="validateEmail()"></ion-input>
+        <p *ngIf="errorMessages.email" class="error-message">{{ errorMessages.email }}</p>
+
+        <ion-input label="Contraseña" label-placement="floating" fill="outline" placeholder="Ej: 123Fact@"
+          type="password" [(ngModel)]="password" (input)="validatePassword()"></ion-input>
+        <p *ngIf="errorMessages.password" class="error-message">{{ errorMessages.password }}</p>
+
+        <ion-button shape="round" class="boton" (click)="login()" [disabled]="!areAllValid()">Iniciar
+          Sesion</ion-button>
+
+        <a class="links-secundarios" [routerLink]="['/register']">Registrarse</a><br>
+        <a class="links-secundarios" [routerLink]="['/recuperacontra']">Olvidé mi Contraseña</a><br>
+
+      </ion-card-content>
+    
+  </ion-content>
+</ion-content>
+
+
+
+
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>login</ion-title>
   </ion-toolbar>
@@ -10,4 +43,4 @@
       <ion-title size="large">login</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->

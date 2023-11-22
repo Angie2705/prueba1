@@ -1,0 +1,183 @@
+.image-container {
+    display: inline-block;
+    cursor: pointer;
+    width: 192px; 
+    height: 192px; 
+    overflow: hidden; 
+    
+    img.custom-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+    }
+  }
+  
+  .fondo{
+      --ion-background-color: #d6c8f0;
+      //background-image: url(../../../assets/icon/5994312.jpg);
+  }
+  
+  .caja{
+      background-color: #ab8ae9;
+      background-image: url(../../../assets/icon/5994312.jpg);
+      
+      border-radius: 10px;
+      box-shadow: 0px 0px 2px black;
+      --ion-input: #ffffff;
+  
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  ion-input{
+    color: #000000; //letras
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    
+  }
+  
+  ion-button{
+    display: flex;
+    max-width: 165px;
+    width: 100%;
+    margin-top: 3px;
+  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+  }
+  
+  //cabecera
+  ion-toolbar{
+    --ion-background-color: #8346b4;
+    --ion-text-color: #effaff;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  
+  .mi-boton {
+    border: 2px solid #007bff; /* Cambia #007bff al color deseado */
+    border-radius: 10px; /* Ajusta el radio de los bordes a tu gusto */
+  }
+  
+  // // .fondo{
+  // //     // --ion-background-color: #d6c8f0;
+  // //     // --background: url(../../../assets/6075500.jpg);
+  // // }
+  
+  
+    
+  // ion-input{
+  //     justify-content: center;
+  //     display: flex;
+  //     color: #ffffff; //letras
+  //     margin-top: 15px;
+  //     margin-left: 15px;
+  //     margin-right: 15px;
+      
+  // }
+   
+  // ion-button{
+  //     display: flex;
+  //     max-width: 165px;
+  //     width: 100%;
+  //     margin-top: 3px;
+  //     position: relative;
+  //     margin: 20px;
+    
+  //     flex-direction: column;
+  //     align-items: center;
+  //     justify-content: center;
+  //     color: #000000;
+  // }
+  
+  // // //cabecera
+  // // ion-toolbar{
+  // //     --ion-background-color: #8346b4;
+  // //     --ion-text-color: #effaff;
+  // //     background-color: transparent;
+  // //     opacity: 0;
+  // // }
+  
+  // ion-content{
+  //     background-color: #e1eaf9;
+      
+  // }
+  
+  // ion-header{
+  //     position: absolute;
+  // }
+  
+  // ion-card{
+  //     --ion-background-color: transparent;
+  //     box-shadow: none;
+  // }
+  
+  // ion-card-title{
+  //     margin-top: 30px;
+  //     font-size: 30px;
+  //     color: #000000;
+  //     text-align: center;
+      
+  //     font-family: roboto;
+  //     // font-family: segoeui;
+  //     // font-family: cursive;
+  //     // font-family: Helvetica;
+  //     // font-family: Arial;
+  //     // font-family: sans-serif;
+  //     // font-family: 'Arial', sans-serif;
+  //     // font-family: 'Helvetica', sans-serif;
+  //     // font-family: 'Georgia', serif;
+  //     // font-family: 'Verdana', sans-serif;
+  
+  //     font-weight: 600;
+  // }
+  
+  
+  // ion-card-subtitle{
+  //     padding-top: 10px;
+  //     font-size: 11px;
+  //     color: #08dded;
+  //     text-align: center;
+  //     font-weight: 300;
+  //     font-family: monospace;
+  // }
+  
+  // .links-secundarios{
+  //     color: #ffffff;
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
+  //     justify-content: center;  
+  // }
+  
+  // .error-messages-container {
+  //     display: block; /* Asegura que los mensajes estén en formato vertical */
+  //     color: red; /* Color de texto en rojo u otro color deseado */
+  //     margin-top: 5px; /* Espacio superior entre mensajes (ajusta según sea necesario) */
+  // }
+     
+  // .error-message {
+  //   color: red;
+  //   font-size: 14px;
+  //   margin-top: 4px;
+  // }
+  
+  // .avatar{
+  //     /* cambia estos dos valores para definir el tamaño de tu círculo */
+  //     height: 20px;
+  //     width: 200px;
+  //     /* los siguientes valores son independientes del tamaño del círculo */
+  //     background-repeat: no-repeat;
+  //     border-radius: 50%;
+  //     background-size: 100%;
+  //     // background-image: url(/src/assets/icon/auto_negro.png);
+  // }

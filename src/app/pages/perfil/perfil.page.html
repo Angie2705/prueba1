@@ -1,5 +1,63 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Botón del menú a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Título con imagen a la izquierda -->
+    <ion-title slot="start" style="display: flex; align-items: center;">
+      Perfil de usuario
+    </ion-title>
+
+    <!-- Avatar a la derecha -->
+    <ion-avatar slot="end">
+      <img [routerLink]="['/pprincipal']" alt="Avatar" src="assets/icon/auto_negro.png" />
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo" [fullscreen]="true">
+  <ion-card-content>
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">perfil</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-card class="caja">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-avatar>
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+        </ion-card-title>
+
+      </ion-card-header>
+
+      <ion-card-content>
+        <ng-container *ngIf="userInfo">
+          <p>Nombre: {{userInfo.nombre}}</p>
+          <p>Apellido: {{userInfo.apellido}}</p>
+          <p>Rut: {{userInfo.rut}}</p>
+          <p>Correo Electrónico: {{userInfo.correo}}</p>
+          <p>Contraseña: {{userInfo.clave}}</p>
+          <p>Telefono: {{userInfo.telefono}}</p>
+          <p>Direccion: {{userInfo.direccion}}</p>
+        </ng-container>
+        <ng-container *ngIf="!userInfo">
+          <p>No se encontraron datos de usuario.</p>
+        </ng-container>
+        <br>
+        <ion-button shape="round" class="boton" [routerLink]="['/modificaruser']">Editar Perfil</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-card-content>
+</ion-content>
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-title>perfil</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,4 +68,4 @@
       <ion-title size="large">perfil</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->

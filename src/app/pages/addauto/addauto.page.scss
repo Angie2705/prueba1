@@ -1,0 +1,67 @@
+.image-container {
+    display: inline-block;
+    cursor: pointer;
+    width: 192px; 
+    height: 192px; 
+    overflow: hidden; 
+    
+    img.custom-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+    }
+  }
+  
+    .fondo{
+      --ion-background-color: #d6c8f0;
+      //background-image: url(../../../assets/icon/5994312.jpg);
+  }
+  
+  .caja{
+      //background-color: #ab8ae9;
+      background-image: url(../../../assets/icon/5994312.jpg);
+  
+      border-radius: 10px;
+      box-shadow: 0px 0px 2px black;
+      --ion-input: #ffffff;
+  
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; 
+  }
+  
+  ion-input{
+    color: #000000;  //letras
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  ion-button{
+    display: flex;
+    max-width: 165px;
+    width: 100%;
+    margin-top: 3px;
+  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+  }
+  
+  //cabecera
+  ion-toolbar{
+    --ion-background-color: #8346b4;
+    --ion-text-color: #effaff;
+  }
+  
+  ion-select {
+    color:#000000 //Letras 
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+  }

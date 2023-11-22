@@ -15,6 +15,10 @@ import { AddautoPage } from './addauto.page';
     IonicModule,
     AddautoPageRoutingModule
   ],
-  declarations: [AddautoPage]
+
+  declarations: [
+    AddautoPage
+  ]
 })
+
 export class AddautoPageModule {}

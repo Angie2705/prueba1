@@ -8,6 +8,8 @@ import { DbservicioService } from '../services/dbservicio.service';
 })
 export class HomePage {
 
-  constructor(private db: DbservicioService) {}
+  constructor(
+    private db: DbservicioService
+    ) {}
 
 }

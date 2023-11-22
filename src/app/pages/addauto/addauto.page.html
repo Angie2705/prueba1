@@ -1,5 +1,102 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Botón del menú a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Título con imagen a la izquierda -->
+    <ion-title slot="start" style="display: flex; align-items: center;">
+      Agregar Auto
+    </ion-title>
+
+    <!-- Avatar a la derecha -->
+    <ion-avatar slot="end">
+      <img [routerLink]="['/pprincipal']" alt="Avatar" src="assets/icon/auto_negro.png" />
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondo" [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Agregar Auto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content>
+    <ion-card-content class="caja">
+      <br>
+
+      <ion-button (click)="takePicture()">Tomar foto</ion-button>
+      <img *ngIf="image" [src]="image" alt="image" style="width: 100%;max-width: 250px;">
+
+      <input type="file" style="display: none" #fileInput (change)="handleFileInput($event)">
+      <ion-button (click)="fileInput.click()">Subir foto</ion-button>
+      <img [src]="selectedImage" *ngIf="selectedImage">
+
+      <ion-select label="Marca" label-placement="floating" fill="outline" [(ngModel)]="marca" (blur)="validatemarca()">
+        <ion-select-option value="Toyota">Toyota</ion-select-option>
+        <ion-select-option value="Chevrolet">Chevrolet</ion-select-option>
+        <ion-select-option value="Hyundai">Hyundai</ion-select-option>
+        <ion-select-option value="Kia">Kia</ion-select-option>
+        <ion-select-option value="Nissan">Nissan</ion-select-option>
+        <ion-select-option value="Ford">Ford</ion-select-option>
+        <ion-select-option value="Volkswagen">Volkswagen</ion-select-option>
+        <ion-select-option value="Mazda">Mazda</ion-select-option>
+        <ion-select-option value="Suzuki">Suzuki</ion-select-option>
+        <ion-select-option value="Subaru">Subaru</ion-select-option>
+        <ion-select-option value="Mercedes-Benz">Mercedes-Benz</ion-select-option>
+        <ion-select-option value="BMW">BMW</ion-select-option>
+      </ion-select>
+      <p *ngIf="errorMessages.marca" class="error-message">{{ errorMessages.marca }}</p>
+
+      <ion-input label="Modelo" label-placement="floating" fill="outline" placeholder="SM3" [(ngModel)]="modelo"
+        required (blur)="validateModel(modelo)"></ion-input>
+      <p *ngIf="errorMessages.modelo" class="error-message">{{ errorMessages.modelo }}</p>
+
+      <ion-input label="Patente" label-placement="floating" fill="outline" placeholder="BB-RR-48" [(ngModel)]="patente"
+        required (blur)="validatePatent(patente)"></ion-input>
+      <p *ngIf="errorMessages.patente" class="error-message">{{ errorMessages.patente }}</p>
+
+      <ion-select label="Color" label-placement="floating" fill="outline" [(ngModel)]="color" (blur)="validatecolor()">
+        <ion-select-option value="Rojo">Rojo</ion-select-option>
+        <ion-select-option value="Azul">Azul</ion-select-option>
+        <ion-select-option value="Verde">Verde</ion-select-option>
+        <ion-select-option value="Blanco">Blanco</ion-select-option>
+        <ion-select-option value="Negro">Negro</ion-select-option>
+        <ion-select-option value="Gris">Gris</ion-select-option>
+        <ion-select-option value="Plateado">Plateado</ion-select-option>
+        <ion-select-option value="Amarillo">Amarillo</ion-select-option>
+        <ion-select-option value="Naranja">Naranja</ion-select-option>
+        <ion-select-option value="Marrón">Marrón</ion-select-option>
+        <ion-select-option value="Violeta">Violeta</ion-select-option>
+        <ion-select-option value="Rosa">Rosa</ion-select-option>
+      </ion-select>
+      <p *ngIf="errorMessages.color" class="error-message">{{ errorMessages.color }}</p>
+
+      <ion-input label="Nro Chasis" label-placement="floating" fill="outline" placeholder="65645356587698"
+        [(ngModel)]="nroChasis" required (blur)="validateChassis(nroChasis)"></ion-input>
+      <p *ngIf="errorMessages.nroChasis" class="error-message">{{ errorMessages.nroChasis }}</p>
+
+      <br>
+
+      <ion-button shape="round" class="boton" (click)="agregarAuto()" [disabled]="!areAllValid()">Ingresar Auto</ion-button>
+      <br>
+
+      <ion-button shape="round" [routerLink]="['/']">Volver</ion-button>
+
+    </ion-card-content>
+  </ion-content>
+</ion-content>
+
+
+
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-title>addauto</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,4 +107,19 @@
       <ion-title size="large">addauto</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>addauto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">addauto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->

@@ -1,5 +1,69 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Botón del menú a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Título con imagen a la izquierda -->
+    <ion-title slot="start" style="display: flex; align-items: center;">
+      Ingresar Viaje
+    </ion-title>
+
+    <!-- Avatar a la derecha -->
+    <ion-avatar slot="end">
+      <img [routerLink]="['/pprincipal']" alt="Avatar" src="assets/icon/auto_negro.png" />
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="fondo" [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">addviaje</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-card-content class="caja">
+      <br>
+
+      <ion-input label="Origen" label-placement="floating" fill="outline" placeholder="Plaza Norte" [(ngModel)]="origen"
+        (input)="validateOrigen()"></ion-input>
+      <p *ngIf="errorMessages.origen" class="error-message">{{ errorMessages.origen }}</p>
+
+      <ion-input label="Destino" label-placement="floating" fill="outline" placeholder="Costanera Center"
+        [(ngModel)]="destino" (input)="validateDestino()"></ion-input>
+      <p *ngIf="errorMessages.destino" class="error-message">{{ errorMessages.destino }}</p>
+      
+      <ion-select label="Asientos Disponibles" label-placement="floating" fill="outline" [(ngModel)]="numasiento">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+      </ion-select>
+      <p *ngIf="errorMessages.numasiento" class="error-message">{{ errorMessages.numasiento }}</p>
+
+      <br>
+
+      <ion-datetime id="reloj" presentation="date-time" [min]="minDateTime"></ion-datetime>
+
+      <!-- <ion-datetime presentation="date-time" [preferWheel]="true"></ion-datetime> -->
+      <!-- <ion-datetime id="reloj" presentation="date-time" [preferWheel]="true" [(ngModel)]="reloj" (blur)="validarFecha()"></ion-datetime> -->
+
+      <br>
+
+      <ion-button shape="round" class="boton" (click)="agregarViaje()" [disabled]="!areAllValid()">Ingresar Viaje</ion-button>
+      <ion-button shape="round" [routerLink]="['/']">Volver</ion-button>
+
+      <br>
+
+    </ion-card-content>
+  </ion-content>
+</ion-content>
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-title>addviaje</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,4 +74,20 @@
       <ion-title size="large">addviaje</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->
+
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>addviaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">addviaje</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->

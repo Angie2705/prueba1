@@ -1,5 +1,54 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-title>
+      Google Maps
+    </ion-title>
+    <ion-avatar slot="end">
+      <img [routerLink]="['/pprincipal']" alt="Avatar" src="assets/icon/auto_negro.png"/>
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div >  
+    <capacitor-google-map id="map_canvas" ></capacitor-google-map>
+  </div>
+</ion-content>
+
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons (click) = 'modalControlller.dismiss()'>
+        <ion-icon name=" arrow-back" color="dark"></ion-icon>
+      </ion-buttons> 
+    </ion-buttons>
+    <ion-title class="normal ion-text-wrap">
+      Ubica el selector en la ubicación deseada
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div #map class="map">
+
+  </div>
+
+  <ion-chip class="miubicacion" (click) = "mylocation()">
+    <ion-label class="normal"> Mi ubicación actual </ion-label>
+    <ion-icon name = "locate"></ion-icon>
+  </ion-chip>
+  <ion-chip class="acepta" (click) = "acepta()">
+    <ion-label class="normal"> Aceptar </ion-label>
+    <ion-icon name = "checkmark"></ion-icon>
+  </ion-chip>
+</ion-content> -->
+
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-title>mapa</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,4 +59,4 @@
       <ion-title size="large">mapa</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->

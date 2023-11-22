@@ -1,5 +1,53 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Botón del menú a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Título con imagen a la izquierda -->
+    <ion-title slot="start" style="display: flex; align-items: center;">
+      Recuperar Contraseña
+    </ion-title>
+
+    <!-- Avatar a la derecha -->
+    <ion-avatar slot="end">
+      <img [routerLink]="['/pprincipal']" alt="Avatar" src="assets/icon/auto_negro.png" />
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="fondo" [fullscreen]="true">
+
+  <ion-card class="caja" >
+    <br>
+    <div class="avatar"></div>
+    <ion-label>
+      <h4>Ingrese su Correo</h4>
+    </ion-label>
+    <ion-input label="Correo Electrónico" label-placement="floating" fill="outline" placeholder="Ingrese su Correo"
+      [(ngModel)]="email" (input)="validateEmail()"></ion-input>
+    <p *ngIf="errorMessages.email" class="error-message">{{ errorMessages.email }}</p>
+    <br>
+
+    <ion-button shape="round" color="success" id="present-alert" [routerLink]="['/']" class="boton"
+      (click)="enviaremail()" [disabled]="!areAllValid()">Enviar código</ion-button>
+
+    <ion-alert trigger="present-alert" header="Código enviado"
+      subHeader="Revisar bandeja de entrada de su correo electrónico" [buttons]="alertButtons">
+    </ion-alert>
+    <!-- <ion-button shape="round" color="danger" [routerLink]="['/']">Cancelar</ion-button> -->
+  </ion-card>
+
+</ion-content>
+
+
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
     <ion-title>recuperacontra</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,4 +58,4 @@
       <ion-title size="large">recuperacontra</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+</ion-content> -->

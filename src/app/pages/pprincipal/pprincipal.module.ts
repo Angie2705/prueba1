@@ -15,6 +15,10 @@ import { PprincipalPage } from './pprincipal.page';
     IonicModule,
     PprincipalPageRoutingModule
   ],
-  declarations: [PprincipalPage]
+
+  declarations: [
+    PprincipalPage
+  ]
 })
+
 export class PprincipalPageModule {}
