@@ -85,7 +85,7 @@ export class LoginPage implements OnInit {
 
   async showAlert(message: string) {
     const alert = await this.alertController.create({
-      header: 'Error de Validación',
+      header: 'Alerta',
       message: message,
       buttons: ['OK'],
     });
@@ -107,9 +107,15 @@ export class LoginPage implements OnInit {
 
     if (this.areAllValid()) {
       const response = await this.db.login(this.email, this.password)
-      // Lógica para iniciar sesión
-      this.showAlert('Inicio de sesión exitoso');
-      this.router.navigate(['/pprincipal']);
+      if(response){
+        let usuario = await this.db.buscarUsuarioCorreo(this.email)
+        // Lógica para iniciar sesión
+        localStorage.setItem('Datos', usuario.rut)
+        this.showAlert('Inicio de sesión exitoso');
+        this.router.navigate(['/pprincipal']);
+      } else {
+        this.showAlert('Error en el inicio de sesión');
+      }
     } else {
       const alert = await this.alertController.create({
         header: 'Error de Validación',

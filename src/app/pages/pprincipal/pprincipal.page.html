@@ -12,10 +12,14 @@
 
     <!-- Avatar a la derecha -->
     <ion-avatar slot="end">
+      <img [routerLink]="['/perfil']" alt="Avatar" src="assets/icon/auto_negro.png"/>
+    </ion-avatar>
+    <ion-avatar slot="end">
       <img [routerLink]="['/pprincipal']" alt="Avatar" src="assets/icon/auto_negro.png"/>
     </ion-avatar>
   </ion-toolbar>
 </ion-header>
+<!-- <app-menu></app-menu> -->
 
 <ion-content class="fondo" [fullscreen]="true">
   <ion-header collapse="condense">

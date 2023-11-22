@@ -29,10 +29,10 @@ export class DbservicioService {
     'CREATE TABLE IF NOT EXISTS sede (idSede INTEGER PRIMARY KEY autoincrement NOT NULL, nombreSede VARCHAR(30)NOT NULL);';
 
   tablaUsuario: string =
-    'CREATE TABLE IF NOT EXISTS usuario ( rut VARCHAR(12) PRIMARY KEY , nombre VARCHAR(100) NOT NULL,apellido VARCHAR(100) NOT NULL, correo VARCHAR(100) NOT NULL, clave VARCHAR(100) NOT NULL, telefono INTEGER(9) NOT NULL, direccion VARCHAR(50) NOT NULL,idrol_FK INTEGER, FOREING KEY (idrol_FK) REFERENCES rol(idrol) );'; // TABLA CON FK INCOMPLETA
+    'CREATE TABLE IF NOT EXISTS usuario ( rut VARCHAR(12) PRIMARY KEY , nombre VARCHAR(100) NOT NULL,apellido VARCHAR(100) NOT NULL, correo VARCHAR(100) NOT NULL, clave VARCHAR(100) NOT NULL, telefono INTEGER(9) NOT NULL, direccion VARCHAR(50) NOT NULL,idrol_FK INTEGER, FOREIGN KEY (idrol_FK) REFERENCES rol(idrol) );'; // TABLA CON FK INCOMPLETA
 
   tablaViaje: string =
-    'CREATE TABLE IF NOT EXISTS viaje (idViaje INTEGER PRIMARY KEY NOT NULL , fechaViaje DATE NOT NULL, horaViaje DATE NOT NULL, asientos NUMBER(2) NOT NULL, idSede_FK INTEGER, FOREING KEY (idSede_FK) REFERENCES sede(idSede), idcomuna_FK INTEGER, FOREING KEY (idcomuna_FK) REFERENCES comuna(idcomuna), descipcion VARCHAR(50) NOT NULL, idCalificacion_FK INTEGER, FOREING KEY (idCalificacion_FK) REFERENCES calificacion(idCalificacion) );';  // TABLA CON FK INCOMPLETA
+    'CREATE TABLE IF NOT EXISTS viaje (idViaje INTEGER PRIMARY KEY NOT NULL , fechaViaje DATE NOT NULL, horaViaje DATE NOT NULL, asientos NUMBER(2) NOT NULL, idSede_FK INTEGER, idcomuna_FK INTEGER, descripcion VARCHAR(50) NOT NULL, idCalificacion_FK INTEGER, FOREIGN KEY (idSede_FK) REFERENCES sede(idSede), FOREIGN KEY (idCalificacion_FK) REFERENCES calificacion(idCalificacion), FOREIGN KEY (idcomuna_FK) REFERENCES comuna(idcomuna));';  // TABLA CON FK INCOMPLETA
 
   tablaCalificacion: string =
     'CREATE TABLE IF NOT EXISTS calificacion (idCalificacion INTEGER PRIMARY KEY autoincrement NOT NULL, comentarioCalificacion VARCHAR(100), calificacion INTEGER(1) NOT NULL );';
@@ -41,21 +41,36 @@ export class DbservicioService {
     'CREATE TABLE IF NOT EXISTS reclamo (idReclamo INTEGER PRIMARY KEY autoincrement NOT NULL, descripcionReclamo VARCHAR(100) NOT NULL);';
 
   tablaAuto: string =
-    'CREATE TABLE IF NOT EXISTS auto (patente INTEGER PRIMARY KEY autoincrement NOT NULL, color VARCHAR(10) NOT NULL, marca VARCHAR(20) NOT NULL, modelo VARCHAR(20) NOT NULL,  numeroMotor VARCHAR(100) NOT NULL, numeroChasis VARCHAR(100) NOT NULL,rut_FK VARCHAR(12),FOREING KEY (rut_FK) REFERENCES usuario(rut)) ;';  // TABLA CON FK INCOMPLETA
+    'CREATE TABLE IF NOT EXISTS auto (patente INTEGER PRIMARY KEY autoincrement NOT NULL, color VARCHAR(10) NOT NULL, marca VARCHAR(20) NOT NULL, modelo VARCHAR(20) NOT NULL,  numeroMotor VARCHAR(100) NOT NULL, numeroChasis VARCHAR(100) NOT NULL,rut_FK VARCHAR(12),FOREIGN KEY (rut_FK) REFERENCES usuario(rut)) ;';  // TABLA CON FK INCOMPLETA
 
   // FIN DE CREACIÓN DE TABLAS //
 
   // COMIENZO DE LOS INSERT //
   // SE INSERTAN DATOS A LAS TABLAS//
-  insertUsuario(rut: string, nombre: string, apellido: string, correo: string, clave: string, telefono: string, direccion: string) {
-    const sql = `INSERT INTO usuario (rut, nombre, apellido, correo, clave, telefono, direccion, idrol_FK) VALUES ('${rut}', '${nombre}','${apellido}', '${correo}', '${clave}', '${telefono}','${direccion}','');`;
+  insertUsuario(rut: string, nombre: string, apellido: string, correo: string, clave: string, telefono: string, direccion: string, PC:string) {
+    let NPC=0;
+      if (PC == 'Conductor' || PC == 'conductor') {
+        NPC = 2
+      } else {
+        NPC = 1
+      }
+    const sql = `INSERT INTO usuario (rut, nombre, apellido, correo, clave, telefono, direccion, idrol_FK) VALUES ('${rut}', '${nombre}','${apellido}', '${correo}', '${clave}', '${telefono}','${direccion}',${NPC});`;
     return this.database.executeSql(sql)
+  }
+
+  actualizarUsuario(rut:string,nombre:string,apellido:string,email:string,password:string,telefono:string,direccion:string){
+    return this.database.executeSql('UPDATE usuario SET nombre = ?, apellido = ?, telefono = ?, direccion = ? WHERE rut = ?',
+      [nombre,apellido,telefono,direccion,rut]).then(res=>{
+        this.buscarUsuarios();
+      }).catch(e=>{
+        this.presentAlert("ERROR al actualizar datos de usuario (RUT: "+rut+")");
+      })
   }
 
     // INSERT DE POBLACION DE DATOS //
 
     insertUsuariotest: string =
-    `INSERT INTO usuario (rut, nombre, apellido, correo, clave, telefono, direccion, idrol_FK VALUES (201352886,maximiliano,olave,molave@utem.cl,Gatitos@212,964378329, arturo rodriguez 2728,1);`;
+    `INSERT OR IGNORE INTO usuario (rut, nombre, apellido, correo, clave, telefono, direccion, idrol_FK) VALUES ('201352886','maximiliano','olave','molave@utem.cl','Gatitos@212',964378329,'arturo rodriguez 2728',1);`;
     // `INSERT INTO usuario (rut, nombre, apellido, correo, clave, telefono, direccion, idrol_FK VALUES (201352886, name, last name, correo@duocuc.cl , password, 964378329, arturo rodriguez 2728,1);`;
 
   insertRol1: string =
@@ -65,19 +80,19 @@ export class DbservicioService {
     "INSERT OR IGNORE INTO rol (idrol, nombrerol) VALUES (2, 'Conductor');";
 
   insertComuna: string =
-    "INSERT OF IGNORE INTO comuna (idComuna, nombreComuna) VALUES (1, 'Huechuraba');";
+    "INSERT OR IGNORE INTO comuna (idComuna, nombreComuna) VALUES (1, 'Huechuraba');";
 
   insertComuna2: string =
-    "INSERT OF IGNORE INTO comuna (idComuna, nombreComuna) VALUES (2, 'Quilicura');";
+    "INSERT OR IGNORE INTO comuna (idComuna, nombreComuna) VALUES (2, 'Quilicura');";
 
   insertComuna3: string =
-    "INSERT OF IGNORE INTO comuna (idComuna, nombreComuna) VALUES (3, 'Independencia');";
+    "INSERT OR IGNORE INTO comuna (idComuna, nombreComuna) VALUES (3, 'Independencia');";
 
   insertComuna4: string =
-    "INSERT OF IGNORE INTO comuna (idComuna, nombreComuna) VALUES (4, 'Recoleta');";
+    "INSERT OR IGNORE INTO comuna (idComuna, nombreComuna) VALUES (4, 'Recoleta');";
 
   insertComuna5: string =
-    "INSERT OF IGNORE INTO comuna (idComuna, nombreComuna) VALUES (5, 'Conchalí');";
+    "INSERT OR IGNORE INTO comuna (idComuna, nombreComuna) VALUES (5, 'Conchalí');";
 
 
   insertSede: string =
@@ -346,13 +361,28 @@ export class DbservicioService {
     });
   }
 
+  buscarUsuario(rut:string){
+    return this.database.executeSql('SELECT * FROM usuario WHERE rut = ?',[rut]).then(res=>{
+      if(res.rows.length == 1){
+        return res.rows.item(0);
+      }
+    })
+  }
+
+  buscarUsuarioCorreo(correo:string){
+    return this.database.executeSql('SELECT * FROM usuario WHERE correo = ?',[correo]).then(res=>{
+      if(res.rows.length == 1){
+        return res.rows.item(0);
+      }
+    })
+  }
   
 
   login(correo: any, password: any) {
     //this.storage.set('logeado', correo)
 
     let log = [correo, password]
-    return this.database.executeSql("SELECT * FROM usuario WHERE nombre = ? AND clave = ?", [log[0], log[1]])
+    return this.database.executeSql("SELECT * FROM usuario WHERE correo = ? AND clave = ?", [log[0], log[1]])
       .then(res => {
         let items: Usuario[] = [];
         if (res.rows.length > 0) {
@@ -415,35 +445,36 @@ export class DbservicioService {
   }
 
   async crearTablas() {
+    let state = 0;
     try {
       // ejecutar la creación de tablas
-      await this.database.executeSql(this.tablaRol, []);
-      await this.database.executeSql(this.tablaComuna, []);
-      await this.database.executeSql(this.tablaSedes, []);
-      await this.database.executeSql(this.tablaUsuario, []);
-      await this.database.executeSql(this.tablaViaje, []);
-      await this.database.executeSql(this.tablaCalificacion, []);
-      await this.database.executeSql(this.tablaReclamo, []);
-      await this.database.executeSql(this.tablaAuto, []);
+      await this.database.executeSql(this.tablaRol, []);state = 1;
+      await this.database.executeSql(this.tablaComuna, []);state = 2;
+      await this.database.executeSql(this.tablaSedes, []);state = 3;
+      await this.database.executeSql(this.tablaUsuario, []);state = 4;
+      await this.database.executeSql(this.tablaViaje, []);state = 5;
+      await this.database.executeSql(this.tablaCalificacion, []);state = 6;
+      await this.database.executeSql(this.tablaReclamo, []);state = 7;
+      await this.database.executeSql(this.tablaAuto, []);state = 8;
 
       //ejecuto los insert
-      await this.database.executeSql(this.insertRol1, []);
-      await this.database.executeSql(this.insertRol2, []);
-      await this.database.executeSql(this.insertComuna, []);
-      await this.database.executeSql(this.insertComuna2, []);
-      await this.database.executeSql(this.insertUsuariotest, []);
+      await this.database.executeSql(this.insertRol1, []);state = 9;
+      await this.database.executeSql(this.insertRol2, []);state = 10;
+      await this.database.executeSql(this.insertComuna, []);state = 11;
+      await this.database.executeSql(this.insertComuna2, []);state = 12;
+      await this.database.executeSql(this.insertUsuariotest, []);state = 13;
       console.log('Tabla de usuario creada exitosamente');
-      await this.database.executeSql(this.insertComuna3, []);
-      await this.database.executeSql(this.insertComuna4, []);
-      await this.database.executeSql(this.insertComuna5, []);
-      await this.database.executeSql(this.insertSede, []);
-      await this.database.executeSql(this.insertSede2, []);
+      await this.database.executeSql(this.insertComuna3, []);state = 14;
+      await this.database.executeSql(this.insertComuna4, []);state = 15;
+      await this.database.executeSql(this.insertComuna5, []);state = 16;
+      await this.database.executeSql(this.insertSede, []);state = 17;
+      await this.database.executeSql(this.insertSede2, []);state = 18;
 
       //cambio mi observable de BD
       this.isDBREADY.next(true);
       //this.buscarSedes();
     } catch (e) {
-      this.presentAlert('Error en crearBD: ' + JSON.stringify(e));
+      this.presentAlert('Error en crearTablas: ' + JSON.stringify(e) + "[S"+state+"]");
     }
   }
 }

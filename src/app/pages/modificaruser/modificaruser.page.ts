@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { DbservicioService } from 'src/app/services/dbservicio.service';
+import { Usuario } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-modificaruser',
@@ -35,9 +37,23 @@ export class ModificaruserPage implements OnInit {
   direccionErrorShown: boolean = false;
 
   constructor(
+    private db: DbservicioService,
     private alertController: AlertController, 
     private router: Router
   ) {}
+
+  async ngOnInit() {
+    let logRut = localStorage.getItem("Datos");
+    if(logRut){
+      let user:Usuario = await this.db.buscarUsuario(logRut);
+      this.nombre = user.nombre;
+      this.apellido = user.apellido;
+      this.rut = user.rut;
+      this.email = user.correo;
+      this.telefono = user.telefono;
+      this.direccion = user.direccion;
+    }
+  }
 
   takePicture = async () => {
     const image = await Camera.getPhoto({
@@ -247,6 +263,7 @@ export class ModificaruserPage implements OnInit {
 
     if (this.areAllValid()) {
       // Lógica para el registro exitoso
+      this.db.actualizarUsuario(this.rut,this.nombre,this.apellido,this.email,this.password,this.telefono,this.direccion);
       this.showModificationSuccessAlert();
       this.router.navigate(['/perfil']);
     } else {
@@ -267,9 +284,6 @@ export class ModificaruserPage implements OnInit {
       buttons: ['OK'],
     });
     await alert.present();
-  }
-
-  ngOnInit() {
   }
 
 }

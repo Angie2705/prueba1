@@ -264,7 +264,11 @@ export class RegisterPage implements OnInit {
 
     if (this.areAllValid()) {
       // Lógica para el registro exitoso
-      // this.bdService.insertUsuario(this.rut, this.nombre, this.apellido, this.email, this.password, this.telefono, this.direccion);
+      this.db.insertUsuario(this.rut, this.nombre, this.apellido, this.email, this.password, this.telefono, this.direccion, this.PC);
+      let ne: any= {state:{
+        rut: this.rut
+      }}
+      localStorage.setItem('Datos', this.rut)
       this.showRegistrationSuccessAlert();
       this.router.navigate(['/perfil']);
     } else {
