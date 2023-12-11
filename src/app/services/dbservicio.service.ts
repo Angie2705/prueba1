@@ -379,28 +379,33 @@ export class DbservicioService {
   
 
   login(correo: any, password: any) {
+    this.presentAlert ('a')
     //this.storage.set('logeado', correo)
 
-    let log = [correo, password]
-    return this.database.executeSql("SELECT * FROM usuario WHERE correo = ? AND clave = ?", [log[0], log[1]])
+    // let log = [correo, password]
+    this.presentAlert ('b')
+    return this.database.executeSql("SELECT * FROM usuario WHERE correo = ? AND clave = ?", [correo, password])
       .then(res => {
         let items: Usuario[] = [];
+        this.presentAlert ('c')
         if (res.rows.length > 0) {
-          for (var i = 0; i < res.rows.length; i++) {
-            items.push({
-              rut: res.rows.item(i).rut,
-              nombre: res.rows.item(i).nombre,
-              apellido: res.rows.item(i).apellido,
-              correo: res.rows.item(i).correo,
-              clave: res.rows.item(i).clave,
-              telefono: res.rows.item(i).telefono,
-              direccion: res.rows.item(i).direccion,
-              idrol_FK: res.rows.item(i).idrol_FK,
-            });
-          }
+          this.presentAlert ('d')
+          // for (var i = 0; i < res.rows.length; i++) {
+          //   items.push({
+          //     rut: res.rows.item(i).rut,
+          //     nombre: res.rows.item(i).nombre,
+          //     apellido: res.rows.item(i).apellido,
+          //     correo: res.rows.item(i).correo,
+          //     clave: res.rows.item(i).clave,
+          //     telefono: res.rows.item(i).telefono,
+          //     direccion: res.rows.item(i).direccion,
+          //     idrol_FK: res.rows.item(i).idrol_FK,
+          //   });
+          // }
           return true;
         }
         else {
+          this.presentAlert ('e')
           return false;
         }
       })

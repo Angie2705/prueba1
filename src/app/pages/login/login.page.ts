@@ -102,11 +102,18 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
+    this.showAlert('1');
+
     this.validateEmail();
+    this.showAlert('2');
+
     this.validatePassword();
+    this.showAlert('3');
 
     if (this.areAllValid()) {
+      this.showAlert('4' + this.email + this.password);
       const response = await this.db.login(this.email, this.password)
+      this.showAlert('5');
       if(response){
         let usuario = await this.db.buscarUsuarioCorreo(this.email)
         // Lógica para iniciar sesión
@@ -116,6 +123,7 @@ export class LoginPage implements OnInit {
       } else {
         this.showAlert('Error en el inicio de sesión');
       }
+      this.showAlert('6');
     } else {
       const alert = await this.alertController.create({
         header: 'Error de Validación',
